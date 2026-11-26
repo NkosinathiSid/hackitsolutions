@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HITS · Hack IT Solutions</title>
+<meta name="description" content="HITS (Hack IT Solutions): IT support for small businesses and home offices in Johannesburg, Microsoft Azure cloud work by a certified architect, and AI automation that answers and books your leads.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233d6bff'/%3E%3Cstop offset='1' stop-color='%2316d9c4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='112' height='112' rx='28' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M34 30V90M86 30V90'/%3E%3Cpath d='M34 60H48L55 46L65 74L72 60H86'/%3E%3C/g%3E%3Ccircle cx='86' cy='30' r='5' fill='%237dffb2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#070b16;--panel:#0f1730;--panel2:#131d3a;--line:#22305a;--ink:#eef2ff;--muted:#a3b1d6;--blue:#3d6bff;--teal:#16d9c4;--mint:#7dffb2;--red:#ff6b7a;--grad:linear-gradient(135deg,#3d6bff,#16d9c4)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:76px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",Arial,sans-serif;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 500px at 85% -10%,rgba(61,107,255,.22),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(22,217,196,.10),transparent 60%),linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/100% 44px,linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/44px 100%;z-index:-1}
+a{color:var(--mint);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+h1,h2,h3{font-family:Sora,Inter,Arial,sans-serif;letter-spacing:-.02em;line-height:1.05;text-wrap:balance;margin:0}
+.band{padding:clamp(36px,5vw,80px) max(5vw,16px)}
+.in{max-width:1240px;margin:0 auto}
+.mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+header{position:sticky;top:0;z-index:10;background:rgba(7,11,22,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;padding:10px max(5vw,16px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo small{display:block;font:500 12px/1 Inter,Arial,sans-serif;color:var(--muted);letter-spacing:.04em;margin-top:3px}
+nav{display:flex;align-items:center;gap:4px 18px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;padding:10px 0}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:10px;font:600 16px/1 Inter,Arial,sans-serif;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.go{background:var(--grad);border:0;color:#04101a;box-shadow:0 8px 30px rgba(22,217,196,.25)}
+nav a.btn.go{color:#04101a;padding:0 14px}
+.btn.sm{min-height:40px;padding:0 14px;font-size:15px}
+.hero .in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4vw,56px);align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:6px 12px;font-size:14px;color:var(--muted);margin-bottom:20px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(125,255,178,.15)}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{font-size:clamp(38px,5.4vw,60px);font-weight:800;margin-bottom:18px}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:48ch;margin:0 0 24px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.term{margin-top:26px;background:#050913;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.term .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.term .bar i{width:10px;height:10px;border-radius:50%;background:#2a375f}
+.term pre{margin:0;padding:14px 16px;min-height:200px;font:14px/1.6 "JetBrains Mono",Consolas,monospace;color:#cfe0ff;white-space:pre-wrap}
+.term .ok{color:var(--mint)}
+.term .p{color:var(--teal)}
+.cur{display:inline-block;width:8px;height:16px;background:var(--mint);vertical-align:-3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.netbox{position:relative;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(19,29,58,.7),rgba(11,18,34,.7));overflow:hidden}
+.fig{position:relative;height:clamp(360px,44vw,500px)}
+.fig canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:pan-y}
+.readout{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);font:14px/1.4 "JetBrains Mono",Consolas,monospace;color:var(--muted)}
+.readout b{color:var(--mint);font-weight:500}
+.hint{position:absolute;top:12px;left:14px;font-size:13px;color:var(--muted);pointer-events:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.stat{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:16px 18px}
+.stat b{display:block;font:700 22px/1.1 Sora,Arial,sans-serif;margin-bottom:4px}
+.stat span{color:var(--muted);font-size:15px}
+h2{font-size:clamp(30px,3.6vw,44px);margin-bottom:12px}
+.lede{color:var(--muted);max-width:62ch;margin:0 0 28px;font-size:17px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font:600 16px/1 Inter,Arial,sans-serif;cursor:pointer}
+.tab[aria-selected=true]{background:var(--grad);color:#04101a;border-color:transparent}
+.pane{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(18px,3vw,40px);border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:clamp(18px,3vw,32px)}
+.pane[hidden]{display:none}
+.pane h3{font-size:26px;margin-bottom:10px}
+.pane p{color:var(--muted);margin:0 0 14px}
+.pane ul{margin:0;padding-left:0;list-style:none;display:grid;gap:8px}
+.pane li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px}
+.pane li::before{content:"";width:10px;height:10px;margin-top:7px;border-radius:3px;background:var(--grad)}
+.demo{background:#060b18;border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.4vw,24px)}
+.demo h4{margin:0 0 4px;font:600 17px/1.3 Sora,Arial,sans-serif}
+.demo .small{font-size:14px;color:var(--muted);margin:0 0 14px}
+.hc{display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:18px;align-items:center}
+.toggles{display:grid;gap:8px}
+.tg{display:grid;grid-template-columns:46px minmax(0,1fr);gap:12px;align-items:center;cursor:pointer;font-size:15px;min-height:44px;position:relative}
+.tg input{position:absolute;opacity:0;width:1px;height:1px}
+.sw{width:46px;height:26px;border-radius:99px;background:#26325a;position:relative;transition:background .2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#cfd8f5;transition:transform .2s}
+.tg input:checked+.sw{background:var(--teal)}
+.tg input:checked+.sw::after{transform:translateX(20px);background:#fff}
+.tg input:focus-visible+.sw{outline:3px solid var(--mint);outline-offset:2px}
+.ring{position:relative;width:170px;height:170px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .num b{font:800 44px/1 Sora,Arial,sans-serif}
+.ring .num span{display:block;font-size:14px;color:var(--muted)}
+.fixes{margin-top:14px;font-size:15px;color:var(--muted)}
+.fixes strong{color:var(--ink)}
+.calc{display:grid;gap:14px}
+.calc label.r{display:grid;gap:6px;font-weight:600;font-size:15px}
+.calc .row{display:flex;justify-content:space-between;gap:10px}
+.calc output{font:500 15px/1.3 "JetBrains Mono",Consolas,monospace;color:var(--mint);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--teal))}
+input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--teal))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;margin-top:-8px;box-shadow:0 0 0 6px rgba(125,255,178,.2)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:0}
+.save{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin-top:6px}
+.save div{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.save b{display:block;font:800 clamp(24px,3vw,32px)/1.1 Sora,Arial,sans-serif;white-space:nowrap}
+.save span{font-size:14px;color:var(--muted)}
+.save .big b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chat{display:grid;gap:10px;min-height:320px;align-content:start}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:15px;animation:pop .3s ease-out}
+.msg.lead{background:#1b2648;justify-self:end;border-bottom-right-radius:4px}
+.msg.ai{background:linear-gradient(135deg,rgba(61,107,255,.25),rgba(22,217,196,.2));border:1px solid #2a4a8a;border-bottom-left-radius:4px;justify-self:start}
+.msg.sys{justify-self:center;max-width:100%;background:transparent;border:1px dashed var(--line);color:var(--mint);font:13px/1.4 "JetBrains Mono",Consolas,monospace}
+.msg small{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+.typing{justify-self:start;display:flex;gap:4px;padding:12px 14px;background:#1b2648;border-radius:14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{50%{transform:translateY(-4px);opacity:.5}}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.step{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:20px;transition:border-color .2s,transform .2s}
+.step:hover{border-color:var(--teal);transform:translateY(-3px)}
+.step svg{margin-bottom:12px}
+.step h3{font-size:19px;margin-bottom:6px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.about{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(20px,4vw,56px);align-items:start}
+.badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.badge{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px 12px;text-align:center}
+.badge svg{display:block;margin:0 auto 8px}
+.badge b{display:block;font:700 16px/1.2 Sora,Arial,sans-serif}
+.badge span{font-size:13px;color:var(--muted)}
+.time{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.time li{position:relative;padding:0 0 18px 22px}
+.time li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--teal)}
+.time b{font:700 16px/1.3 Sora,Arial,sans-serif;display:block}
+.time span{color:var(--muted);font-size:15px}
+.rs{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:22px;background:linear-gradient(135deg,rgba(13,107,82,.25),rgba(201,138,0,.12))}
+.rs h3{font-size:22px;margin-bottom:4px}
+.rs p{margin:0;color:var(--muted)}
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,56px)}
+form{display:grid;gap:14px;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:clamp(16px,2.5vw,28px)}
+label.f{display:grid;gap:6px;font-weight:600;font-size:15px}
+input[type=text],input[type=email],textarea{font:16px/1.4 Inter,Arial,sans-serif;padding:12px;border:1px solid var(--line);border-radius:10px;background:#060b18;color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:40px;padding:0 14px;border-radius:99px;border:1px solid var(--line);background:#060b18;color:var(--muted);font:500 15px/1 Inter,Arial,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{border-color:var(--teal);color:var(--ink);background:rgba(22,217,196,.12)}
+#err{color:var(--red);font-size:14px;margin:0;min-height:1.2em}
+#done{display:none;border:1px solid var(--teal);border-radius:12px;padding:16px;background:rgba(22,217,196,.08)}
+#done.show{display:block}
+#done code{overflow-wrap:anywhere}
+.direct p{margin:0 0 12px;font-size:17px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .in{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+@media(max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.hero .in,.pane,.about,.contact{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.hc{grid-template-columns:minmax(0,1fr)}.ring{margin:0 auto}.rs{grid-template-columns:minmax(0,1fr)}.badges{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:minmax(0,1fr)}nav .hide{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <a class="logo" href="#top" aria-label="HITS, Hack IT Solutions, home">
+      <svg width="38" height="38" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d6bff"/><stop offset="1" stop-color="#16d9c4"/></linearGradient></defs><rect x="4" y="4" width="112" height="112" rx="28" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M34 30V90M86 30V90"/><path d="M34 60H48L55 46L65 74L72 60H86"/></g><circle cx="86" cy="30" r="9" fill="#070b16"/><circle cx="86" cy="30" r="5" fill="#7dffb2"/></svg>
+      <span><svg width="78" height="25" viewBox="0 0 240 78" aria-hidden="true"><g fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6V70M50 6V70M6 38H50" stroke="#fff"/><path d="M78 6V70" stroke="#7dffb2"/><path d="M104 6H152M128 6V70" stroke="#fff"/><path d="M226 16Q226 6 214 6H192Q180 6 180 18V27Q180 38 192 38H214Q226 38 226 50V58Q226 70 214 70H192Q180 70 180 60" stroke="#fff"/></g></svg><small>Hack IT Solutions</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#services">Services</a>
+      <a class="hide" href="#how">How it works</a>
+      <a class="hide" href="#about">About</a>
+      <a class="btn go sm" href="#contact">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero band">
+    <div class="in">
+      <div>
+        <div class="pill"><span class="dot"></span>Your anything-IT service provider · Johannesburg</div>
+        <h1>Any IT problem comes with a <span class="gt">solution.</span></h1>
+        <p class="sub">Smart IT for small businesses and home offices. We keep your tech running, set you up on the Microsoft cloud properly, and build AI assistants that answer and book every lead, day and night.</p>
+        <div class="btns">
+          <a class="btn go" href="#contact">Get a quote</a>
+          <a class="btn" href="#services">Try the live demos</a>
+        </div>
+      </div>
+      <div class="netbox">
+        <div class="fig">
+          <canvas id="net" role="img" aria-label="Interactive map of a small office network: laptops, a printer, a phone, a router, the Microsoft cloud and an AI assistant, with data moving between them."></canvas>
+          <span class="hint">Move over the network. Tap a device.</span>
+        </div>
+        <div class="readout" aria-live="polite"><span id="ro">Select a device to inspect it</span><span>status: <b id="st">all systems normal</b></span></div>
+      </div>
+    </div>
+    <div class="in" style="display:block;margin-top:28px">
+      <div class="term" aria-label="Animated console showing example HITS tasks">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <pre id="tty" aria-hidden="true"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="in stats">
+      <div class="stat"><b>Since Sep 2021</b><span>supporting small businesses and home offices</span></div>
+      <div class="stat"><b>AZ-305</b><span>Microsoft Azure Solutions Architect Expert</span></div>
+      <div class="stat"><b>On-site + remote</b><span>on-site in Gauteng, remote anywhere in South Africa</span></div>
+      <div class="stat"><b>24/7 AI</b><span>assistants that reply to leads while you sleep</span></div>
+    </div>
+  </section>
+
+  <section id="services" class="band">
+    <div class="in">
+      <h2>Three services. Try each one.</h2>
+      <p class="lede">Each service below has a small live demo. Play with it to see how we think about your problem.</p>
+      <div class="tabs" role="tablist" aria-label="Services">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Office IT support</button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Microsoft Azure cloud</button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">AI automation</button>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p1" aria-labelledby="t1">
+        <div>
+          <h3>Office IT that stays fixed</h3>
+          <p>The everyday tech that keeps your team working, set up properly and written down so it doesn't break again.</p>
+          <ul>
+            <li>Computer repair: laptops, desktops and printers</li>
+            <li>Wi-Fi, routers and network problems</li>
+            <li>Microsoft 365: email, Teams, OneDrive</li>
+            <li>Home and office networking</li>
+            <li>Cybersecurity, backup and recovery</li>
+            <li>IT consulting: the right tools for your business</li>
+          </ul>
+        </div>
+        <div class="demo">
+          <h4>60-second office IT health check</h4>
+          <p class="small">Switch on what's true for your business.</p>
+          <div class="hc">
+            <div class="toggles" id="checks"></div>
+            <div class="ring" aria-live="polite">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d6bff"/><stop offset="1" stop-color="#7dffb2"/></linearGradient></defs><circle cx="60" cy="60" r="50" fill="none" stroke="#1d2850" stroke-width="12"/><circle id="arc" cx="60" cy="60" r="50" fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" style="transition:stroke-dashoffset .5s"/></svg>
+              <div class="num"><div><b id="score">0</b><span id="grade">score</span></div></div>
+            </div>
+          </div>
+          <div class="fixes" id="fixes"></div>
+        </div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <div>
+          <h3>Microsoft Azure, set up right and costed sensibly</h3>
+          <p>Cloud work by a certified Azure Solutions Architect, Administrator and Security Engineer.</p>
+          <ul>
+            <li>Moving files, servers and apps to Azure</li>
+            <li>Cutting bills: right-sizing and scheduled shutdowns</li>
+            <li>Security reviews, identity and access</li>
+            <li>Monitoring and alerts that reach a person</li>
+          </ul>
+        </div>
+        <div class="demo">
+          <h4>Test servers left on all night? Estimate the waste.</h4>
+          <p class="small">Many teams run test and development servers 24/7 when people only use them in working hours.</p>
+          <div class="calc">
+            <label class="r" for="spend"><span class="row"><span>Monthly test and dev compute bill</span><output id="spendO" for="spend"></output></span><input id="spend" type="range" min="2000" max="200000" step="1000" value="40000"></label>
+            <label class="r" for="hrs"><span class="row"><span>Hours a weekday people need it</span><output id="hrsO" for="hrs"></output></span><input id="hrs" type="range" min="4" max="18" step="1" value="10"></label>
+            <label class="tg" for="wknd"><input id="wknd" type="checkbox" checked><span class="sw"></span><span>Switch off on weekends</span></label>
+            <div class="save">
+              <div class="big"><b id="saveM">R0</b><span>possible saving a month</span></div>
+              <div><b id="saveY">R0</b><span>a year</span></div>
+              <div><b id="pct">0%</b><span>of hours switched off</span></div>
+            </div>
+            <p class="small" style="margin:0">Estimate only, for compute that can be scheduled off. Storage and always-on services still bill. We check your real usage first.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <div>
+          <h3>AI assistants that never leave a lead waiting</h3>
+          <p>Built inside tools you already use, such as GoHighLevel or Microsoft 365, and tuned to your business.</p>
+          <ul>
+            <li>Instant replies to every enquiry, day or night</li>
+            <li>Calls booked straight into your calendar</li>
+            <li>Reminders and no-show follow-ups</li>
+            <li>A daily report of leads and bookings</li>
+          </ul>
+          <p style="margin-top:14px"><button class="btn sm" id="replay" type="button">Replay the demo</button></p>
+        </div>
+        <div class="demo">
+          <h4>An enquiry at 3:48am</h4>
+          <p class="small">Example conversation from a test build for a fictional dental marketing agency.</p>
+          <div class="chat" id="chat" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="in">
+      <h2>How working with us goes</h2>
+      <p class="lede">No contract to start. You get a clear quote before any work begins.</p>
+      <div class="steps">
+        <div class="step"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><rect x="3" y="6" width="30" height="20" rx="5" fill="none" stroke="#16d9c4" stroke-width="2.5"/><path d="M10 26l-3 6 8-6" fill="#16d9c4"/></svg><h3>Tell us the problem</h3><p>Use the form or email. Say what's broken or what you want built.</p></div>
+        <div class="step"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><rect x="7" y="4" width="22" height="28" rx="3" fill="none" stroke="#16d9c4" stroke-width="2.5"/><path d="M12 13h12M12 19h12M12 25h7" stroke="#16d9c4" stroke-width="2.5" stroke-linecap="round"/></svg><h3>Get a fixed quote</h3><p>What we'll do, how long it takes and what it costs.</p></div>
+        <div class="step"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="13" fill="none" stroke="#16d9c4" stroke-width="2.5"/><path d="M12 18l4 4 8-9" fill="none" stroke="#7dffb2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>We fix or build it</h3><p>Remotely where we can, on-site in Gauteng where we can't.</p></div>
+        <div class="step"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 30V14l10-8 10 8v16z" fill="none" stroke="#16d9c4" stroke-width="2.5" stroke-linejoin="round"/><rect x="15" y="20" width="6" height="10" fill="#16d9c4"/></svg><h3>You stay in control</h3><p>A written note of what changed, and every password handed back to you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="band">
+    <div class="in about">
+      <div>
+        <h2>Who you'll work with</h2>
+        <p class="lede">HITS was started in September 2021 by Nkosinathi Sidogi, an IT field technician turned Microsoft Azure engineer, based in Johannesburg. You deal with the person doing the work, from first message to final fix.</p>
+        <div class="badges" aria-label="Microsoft certifications">
+          <div class="badge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 8v18l-14 8-14-8V11z" fill="none" stroke="#3d6bff" stroke-width="2.5"/><path d="M14 21l4 4 8-9" fill="none" stroke="#7dffb2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><b>AZ-305</b><span>Azure Solutions Architect Expert</span></div>
+          <div class="badge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 8v18l-14 8-14-8V11z" fill="none" stroke="#3d6bff" stroke-width="2.5"/><path d="M14 21l4 4 8-9" fill="none" stroke="#7dffb2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><b>AZ-104</b><span>Azure Administrator Associate</span></div>
+          <div class="badge"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l14 8v18l-14 8-14-8V11z" fill="none" stroke="#3d6bff" stroke-width="2.5"/><path d="M14 21l4 4 8-9" fill="none" stroke="#7dffb2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><b>AZ-500</b><span>Azure Security Engineer Associate</span></div>
+        </div>
+      </div>
+      <ol class="time" aria-label="HITS timeline">
+        <li><b>Sep 2021</b><span>HITS opens for business: hands-on IT support for small businesses and home offices.</span></li>
+        <li><b>2023</b><span>Moves into Microsoft Azure engineering and cloud administration.</span></li>
+        <li><b>2026</b><span>Azure Solutions Architect Expert. Adds AI automation and launches Rand Signal.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="in">
+      <div class="rs">
+        <svg width="44" height="44" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="16" width="5" height="10" rx="1" fill="#3fbf95"/><rect x="11.5" y="9" width="5" height="17" rx="1" fill="#3fbf95"/><rect x="21" y="2" width="5" height="24" rx="1" fill="#f0b429"/></svg>
+        <div><h3>Also from HITS: Rand Signal</h3><p>A free weekly brief on South African fintech and payments regulation.</p></div>
+        <a class="btn" href="https://randsignal.co.za/">Visit Rand Signal</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="band">
+    <div class="in contact">
+      <div class="direct">
+        <h2>Let's fix it</h2>
+        <p class="lede">Tell us what you need and we'll reply with a fixed quote.</p>
+        <p>Email: <a href="mailto:hello@hackitsolutions.co.za">hello@hackitsolutions.co.za</a></p>
+        <p>On-site in Johannesburg and Gauteng. Remote support anywhere in South Africa.</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/nkosinathi-sidogi-4742321b0">Nkosinathi Sidogi</a></p>
+      </div>
+      <div>
+        <form id="q" novalidate>
+          <div class="chips" role="group" aria-label="What do you need?">
+            <button type="button" class="chip" aria-pressed="true">Office IT support</button>
+            <button type="button" class="chip" aria-pressed="false">Azure cloud</button>
+            <button type="button" class="chip" aria-pressed="false">AI automation</button>
+            <button type="button" class="chip" aria-pressed="false">Not sure yet</button>
+          </div>
+          <div class="two">
+            <label class="f" for="nm">Name<input id="nm" type="text" autocomplete="name" required></label>
+            <label class="f" for="em">Email<input id="em" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="f" for="co">Business (optional)<input id="co" type="text" autocomplete="organization"></label>
+          <label class="f" for="msg">What's going on?<textarea id="msg" placeholder="For example: our office Wi-Fi keeps dropping and the printer won't connect."></textarea></label>
+          <button class="btn go" type="submit">Prepare my request</button>
+          <p id="err" role="alert"></p>
+          <div id="done" aria-live="polite">
+            <p style="margin-top:0"><strong>Ready to send.</strong> Open it in your email app, or email it to <code>hello@hackitsolutions.co.za</code> yourself.</p>
+            <a class="btn go sm" id="mail" href="mailto:hello@hackitsolutions.co.za">Open my email app</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="band">
+  <div class="in">
+    <span>© 2026 HITS · Hack IT Solutions · Johannesburg, South Africa</span>
+    <span>Any problem comes with a solution.</span>
+  </div>
+</footer>
+
+<script>
+{
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* console */
+  const tty = document.getElementById('tty');
+  const script = [
+    ['hits> ', 'scan office-network'], ['', '✓ 6 devices online · Wi-Fi signal strong', 1],
+    ['hits> ', 'check backups'], ['', '✓ last backup 02:00 · restore tested', 1],
+    ['hits> ', 'azure cost --test-servers'], ['', '✓ night shutdown on · bill down', 1],
+    ['hits> ', 'ai reply --lead "new enquiry"'], ['', '✓ answered · call booked Thu 08:00', 1]
+  ];
+  const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  let html = '';
+  const paint = (extra, cursor) => { tty.innerHTML = html + extra + (cursor ? '<span class="cur"></span>' : ''); };
+  if (reduce) {
+    html = script.map(([p, t, ok]) => ok ? '  <span class="ok">' + esc(t) + '</span>\n' : '<span class="p">' + p + '</span>' + esc(t) + '\n').join('');
+    paint('', false);
+  } else {
+    let li = 0, ci = 0;
+    const tick = () => {
+      if (li >= script.length) { paint('', true); setTimeout(() => { html = ''; li = 0; ci = 0; tick(); }, 4000); return; }
+      const [p, t, ok] = script[li];
+      if (ok) { html += '  <span class="ok">' + esc(t) + '</span>\n'; li++; paint('', true); setTimeout(tick, 700); return; }
+      ci++;
+      paint('<span class="p">' + p + '</span>' + esc(t.slice(0, ci)), true);
+      if (ci >= t.length) { html += '<span class="p">' + p + '</span>' + esc(t) + '\n'; li++; ci = 0; setTimeout(tick, 350); }
+      else setTimeout(tick, 38 + Math.random() * 40);
+    };
+    tick();
+  }
+
+  /* network */
+  const cv = document.getElementById('net'), ctx = cv.getContext('2d');
+  const ro = document.getElementById('ro');
+  const N = [
+    {k:'cloud', t:'Microsoft Azure', fx:.72, fy:.12, info:'cloud · backups and apps · healthy'},
+    {k:'ai', t:'AI assistant', fx:.26, fy:.12, info:'AI · answering new leads · calendar linked'},
+    {k:'router', t:'Router', fx:.50, fy:.48, info:'router · 6 devices · firmware up to date'},
+    {k:'laptop', t:'Front desk', fx:.12, fy:.76, info:'laptop · updates on · antivirus on'},
+    {k:'laptop', t:'Office', fx:.37, fy:.88, info:'laptop · OneDrive synced · 2-step sign-in on'},
+    {k:'printer', t:'Printer', fx:.63, fy:.88, info:'printer · online · toner 64%'},
+    {k:'phone', t:'Phone', fx:.88, fy:.76, info:'phone · on staff Wi-Fi · email synced'}
+  ];
+  const E = [[2,0],[2,1],[1,0],[2,3],[2,4],[2,5],[2,6]];
+  let W = 0, H = 0, mx = -999, my = -999, sel = -1, hov = -1;
+  const packets = [];
+  const size = () => {
+    const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    const padX = Math.max(52, W * .09), padT = 64, padB = 60;
+    N.forEach(n => { n.bx = padX + n.fx * (W - 2 * padX); n.by = padT + n.fy * (H - padT - padB); n.x = n.bx; n.y = n.by; });
+  };
+  const pick = (x, y) => { let b = -1, bd = 40; N.forEach((n, i) => { const d = Math.hypot(x - n.x, y - n.y); if (d < bd) { bd = d; b = i; } }); return b; };
+  const spawn = (ei, burst) => { packets.push({e: Math.max(0, ei), t: burst ? Math.random() * .3 : Math.random(), dir: Math.random() < .5 ? 1 : -1, v: .006 + Math.random() * .006}); };
+  for (let i = 0; i < 10; i++) spawn(i % E.length);
+  cv.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  cv.addEventListener('pointerleave', () => { mx = my = -999; });
+  cv.addEventListener('click', e => {
+    const r = cv.getBoundingClientRect(), i = pick(e.clientX - r.left, e.clientY - r.top);
+    if (i < 0) return;
+    sel = i; ro.textContent = N[i].t + ': ' + N[i].info;
+    E.forEach((ed, ei) => { if (ed.includes(i)) for (let k = 0; k < 3; k++) spawn(ei, true); });
+    if (reduce) frame(0);
+  });
+  const icon = (n, r) => {
+    ctx.save(); ctx.translate(n.x, n.y); ctx.strokeStyle = '#eef2ff'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    const s = r * .5;
+    ctx.beginPath();
+    if (n.k === 'cloud') { ctx.moveTo(-s * .9, s * .45); ctx.lineTo(s * .8, s * .45); ctx.arc(s * .55, s * .02, s * .43, Math.PI * .45, -Math.PI * .5, true); ctx.arc(-s * .05, -s * .2, s * .5, -Math.PI * .1, -Math.PI * .95, true); ctx.arc(-s * .6, s * .1, s * .35, -Math.PI * .6, Math.PI * .5, true); ctx.stroke(); }
+    else if (n.k === 'laptop') { ctx.strokeRect(-s * .8, -s * .6, s * 1.6, s); ctx.moveTo(-s, s * .6); ctx.lineTo(s, s * .6); ctx.stroke(); }
+    else if (n.k === 'printer') { ctx.strokeRect(-s * .9, -s * .2, s * 1.8, s * .8); ctx.strokeRect(-s * .5, -s * .7, s, s * .5); ctx.strokeRect(-s * .5, s * .3, s, s * .45); }
+    else if (n.k === 'phone') { ctx.strokeRect(-s * .45, -s * .8, s * .9, s * 1.6); ctx.moveTo(-s * .15, s * .55); ctx.lineTo(s * .15, s * .55); ctx.stroke(); }
+    else if (n.k === 'router') { ctx.strokeRect(-s * .9, -s * .1, s * 1.8, s * .6); ctx.moveTo(-s * .5, -s * .1); ctx.lineTo(-s * .5, -s * .7); ctx.moveTo(s * .5, -s * .1); ctx.lineTo(s * .5, -s * .7); ctx.stroke(); }
+    else if (n.k === 'ai') { ctx.strokeRect(-s * .8, -s * .55, s * 1.6, s * 1.1); ctx.moveTo(0, -s * .55); ctx.lineTo(0, -s * .85); ctx.stroke(); ctx.fillStyle = '#7dffb2'; ctx.beginPath(); ctx.arc(-s * .3, 0, 2.6, 0, 7); ctx.arc(s * .3, 0, 2.6, 0, 7); ctx.fill(); }
+    ctx.restore();
+  };
+  const frame = tm => {
+    ctx.clearRect(0, 0, W, H);
+    N.forEach((n, i) => {
+      if (reduce) return;
+      const dx = mx - n.bx, dy = my - n.by, d = Math.hypot(dx, dy);
+      const pull = d < 160 && d > 0 ? (160 - d) / 160 * 16 : 0;
+      const tx = n.bx + Math.sin(tm / 1400 + i) * 5 + (pull ? dx / d * pull : 0);
+      const ty = n.by + Math.cos(tm / 1700 + i * 2) * 5 + (pull ? dy / d * pull : 0);
+      n.x += (tx - n.x) * .12; n.y += (ty - n.y) * .12;
+    });
+    hov = pick(mx, my);
+    E.forEach(([a, b]) => {
+      const A = N[a], B = N[b], g = ctx.createLinearGradient(A.x, A.y, B.x, B.y);
+      g.addColorStop(0, 'rgba(61,107,255,.6)'); g.addColorStop(1, 'rgba(22,217,196,.6)');
+      ctx.strokeStyle = g; ctx.lineWidth = (sel >= 0 && (a === sel || b === sel)) ? 3 : 1.6;
+      ctx.setLineDash(a === 1 && b === 0 ? [4, 6] : []);
+      ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    while (packets.length > 28) packets.shift();
+    packets.forEach(p => {
+      if (!reduce) p.t += p.v;
+      if (p.t > 1) { p.t = 0; p.e = Math.floor(Math.random() * E.length); p.dir = Math.random() < .5 ? 1 : -1; }
+      const [a, b] = E[p.e], A = N[p.dir > 0 ? a : b], B = N[p.dir > 0 ? b : a];
+      ctx.fillStyle = '#7dffb2'; ctx.shadowColor = '#7dffb2'; ctx.shadowBlur = 12;
+      ctx.beginPath(); ctx.arc(A.x + (B.x - A.x) * p.t, A.y + (B.y - A.y) * p.t, 3, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+    });
+    N.forEach((n, i) => {
+      const sc = Math.min(1, Math.max(.68, W / 620)), r = (n.k === 'router' || n.k === 'cloud' ? 30 : 25) * sc, on = i === hov || i === sel;
+      const pulse = reduce ? 0 : (Math.sin(tm / 500 + i) + 1) * 3;
+      ctx.fillStyle = on ? 'rgba(125,255,178,.16)' : 'rgba(125,255,178,.07)'; ctx.beginPath(); ctx.arc(n.x, n.y, r + 8 + pulse, 0, 7); ctx.fill();
+      const g = ctx.createLinearGradient(n.x - r, n.y - r, n.x + r, n.y + r);
+      g.addColorStop(0, on ? '#4f7bff' : '#1b2a5c'); g.addColorStop(1, on ? '#1ee3cd' : '#14234a');
+      ctx.fillStyle = g; ctx.strokeStyle = on ? '#7dffb2' : '#3a5296'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 7); ctx.fill(); ctx.stroke();
+      icon(n, r);
+      ctx.fillStyle = '#7dffb2'; ctx.beginPath(); ctx.arc(n.x + r * .72, n.y - r * .72, 4, 0, 7); ctx.fill();
+      ctx.font = (W < 500 ? '600 12px' : '600 13px') + ' Inter, Arial, sans-serif'; ctx.textAlign = 'center';
+      ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(11,18,34,.9)'; ctx.strokeText(n.t, n.x, n.y + r + 18);
+      ctx.fillStyle = on ? '#ffffff' : '#c8d4f5'; ctx.fillText(n.t, n.x, n.y + r + 18);
+    });
+    cv.style.cursor = hov >= 0 ? 'pointer' : 'crosshair';
+    if (!reduce) requestAnimationFrame(frame);
+  };
+  new ResizeObserver(() => { size(); if (reduce) frame(0); }).observe(cv);
+  size();
+  if (reduce) frame(0); else requestAnimationFrame(frame);
+
+  /* tabs */
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  const show = t => { tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (t.id === 't3') runChat(); };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t));
+    t.addEventListener('keydown', e => { const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (k) { const n = tabs[(i + k + tabs.length) % tabs.length]; n.focus(); show(n); } });
+  });
+
+  /* health check */
+  const items = [
+    ['Files back up automatically every day', 'Set up automatic daily backups, kept off-site.', true],
+    ['Every account uses 2-step sign-in', 'Turn on 2-step sign-in for email and Microsoft 365.', false],
+    ['Computers install updates automatically', 'Switch on automatic Windows and app updates.', true],
+    ['Guests use a separate Wi-Fi network', 'Give guests their own Wi-Fi so visitors can\'t reach your files.', false],
+    ['Antivirus runs on every device', 'Make sure every laptop has active, up-to-date protection.', true],
+    ['Someone has tested restoring a backup', 'Test a restore. An untested backup may fail when you need it.', false]
+  ];
+  const box = document.getElementById('checks');
+  box.innerHTML = items.map(([t, , on], i) => `<label class="tg" for="c${i}"><input id="c${i}" type="checkbox"${on ? ' checked' : ''}><span class="sw"></span><span>${t}</span></label>`).join('');
+  const arc = document.getElementById('arc'), sc = document.getElementById('score'), gr = document.getElementById('grade'), fx = document.getElementById('fixes');
+  const hcUpd = () => {
+    const on = items.map((_, i) => document.getElementById('c' + i).checked);
+    const v = Math.round(on.filter(Boolean).length / items.length * 100);
+    arc.style.strokeDashoffset = 314.16 * (1 - v / 100);
+    sc.textContent = v;
+    gr.textContent = v === 100 ? 'excellent' : v >= 67 ? 'good, some gaps' : v >= 34 ? 'at risk' : 'high risk';
+    const miss = items.filter((_, i) => !on[i]).slice(0, 2);
+    fx.innerHTML = miss.length ? '<strong>Fix first:</strong> ' + miss.map(m => m[1]).join(' ') : '<strong>Nice.</strong> Your basics are covered. We can check the details on-site.';
+  };
+  box.addEventListener('change', hcUpd); hcUpd();
+
+  /* azure calc */
+  const spend = document.getElementById('spend'), hrs = document.getElementById('hrs'), wk = document.getElementById('wknd');
+  const R = v => 'R' + Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const calc = () => {
+    const s = +spend.value, h = +hrs.value, on = h * 5 + (wk.checked ? 0 : h * 2), off = 1 - on / 168;
+    document.getElementById('spendO').textContent = R(s);
+    document.getElementById('hrsO').textContent = h + ' h';
+    document.getElementById('saveM').textContent = R(s * off);
+    document.getElementById('saveY').textContent = R(s * off * 12);
+    document.getElementById('pct').textContent = Math.round(off * 100) + '%';
+  };
+  [spend, hrs, wk].forEach(x => x.addEventListener('input', calc)); calc();
+
+  /* chat demo */
+  const chat = document.getElementById('chat');
+  const convo = [
+    ['lead', 'Dr Leah Morgan', 'Hi, I filled in your form. Thursday could work, morning ideally.'],
+    ['ai', 'AI assistant', 'I have Thursday 3 Dec at 8:00 or 9:00 AM for a free 30-minute call. Which suits you?'],
+    ['lead', 'Dr Leah Morgan', '8am works. How much do you charge though?'],
+    ['ai', 'AI assistant', 'You\'re booked for Thursday 3 Dec at 8:00 AM. Pricing depends on your practice, so we\'ll cover it on the call.'],
+    ['sys', '', 'calendar: booked · pipeline: "Call booked" · reminder scheduled']
+  ];
+  let run = 0;
+  const bubble = ([k, w, t]) => { const m = document.createElement('div'); m.className = 'msg ' + k; if (w) { const s = document.createElement('small'); s.textContent = w; m.appendChild(s); } m.appendChild(document.createTextNode(t)); return m; };
+  const runChat = () => {
+    const me = ++run; chat.innerHTML = '';
+    if (reduce) { convo.forEach(c => chat.appendChild(bubble(c))); return; }
+    let i = 0;
+    const next = () => {
+      if (me !== run || i >= convo.length) return;
+      const c = convo[i], ty = document.createElement('div');
+      if (c[0] === 'ai') { ty.className = 'typing'; ty.innerHTML = '<i></i><i></i><i></i>'; chat.appendChild(ty); }
+      setTimeout(() => { if (me !== run) return; ty.remove(); chat.appendChild(bubble(c)); i++; setTimeout(next, 700); }, c[0] === 'ai' ? 1300 : 500);
+    };
+    next();
+  };
+  document.getElementById('replay').addEventListener('click', runChat);
+
+  /* contact */
+  let need = 'Office IT support';
+  const chips = [...document.querySelectorAll('.chip')];
+  chips.forEach(c => c.addEventListener('click', () => { chips.forEach(x => x.setAttribute('aria-pressed', x === c)); need = c.textContent; }));
+  const f = document.getElementById('q'), err = document.getElementById('err'), done = document.getElementById('done'), mail = document.getElementById('mail');
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const nm = document.getElementById('nm').value.trim(), em = document.getElementById('em').value.trim();
+    const co = document.getElementById('co').value.trim(), msg = document.getElementById('msg').value.trim();
+    if (!nm || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { err.textContent = 'Please add your name and a valid email address.'; return; }
+    err.textContent = '';
+    const body = `Name: ${nm}\nEmail: ${em}\nBusiness: ${co || '-'}\nNeed: ${need}\n\n${msg}`;
+    mail.href = 'mailto:hello@hackitsolutions.co.za?subject=' + encodeURIComponent('Quote request: ' + need) + '&body=' + encodeURIComponent(body);
+    done.classList.add('show');
+  });
+}
+</script>
+</body>
+</html>
