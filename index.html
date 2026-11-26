@@ -342,7 +342,6 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
       <div class="direct">
         <h2>Let's fix it</h2>
         <p class="lede">Tell us what you need and we'll reply with a fixed quote.</p>
-        <p>Email: <a href="mailto:hello@hackitsolutions.co.za">hello@hackitsolutions.co.za</a></p>
         <p>On-site visits by arrangement. Remote support anywhere in South Africa.</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/nkosinathi-sidogi-4742321b0">Nkosinathi Sidogi</a></p>
       </div>
@@ -363,8 +362,8 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
           <button class="btn go" type="submit">Prepare my request</button>
           <p id="err" role="alert"></p>
           <div id="done" aria-live="polite">
-            <p style="margin-top:0"><strong>Ready to send.</strong> Open it in your email app, or email it to <code>hello@hackitsolutions.co.za</code> yourself.</p>
-            <a class="btn go sm" id="mail" href="mailto:hello@hackitsolutions.co.za">Open my email app</a>
+            <p style="margin-top:0"><strong>Ready to send.</strong> Your email app will open with your request filled in.</p>
+            <a class="btn go sm" id="mail" href="mailto:nkosinathimac@gmail.com">Open my email app</a>
           </div>
         </form>
       </div>
@@ -585,7 +584,7 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
     if (!nm || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { err.textContent = 'Please add your name and a valid email address.'; return; }
     err.textContent = '';
     const body = `Name: ${nm}\nEmail: ${em}\nBusiness: ${co || '-'}\nNeed: ${need}\n\n${msg}`;
-    mail.href = 'mailto:hello@hackitsolutions.co.za?subject=' + encodeURIComponent('Quote request: ' + need) + '&body=' + encodeURIComponent(body);
+    mail.href = 'mailto:nkosinathimac@gmail.com?subject=' + encodeURIComponent('Quote request: ' + need) + '&body=' + encodeURIComponent(body);
     done.classList.add('show');
   });
 }
