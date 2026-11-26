@@ -114,6 +114,10 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes tp{50%{transform:translateY(-4px);opacity:.5}}
 @keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.flow{display:grid;gap:6px;margin-top:14px}
+.fstep{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;animation:pop .35s ease-out both}
+.fstep span{display:block;font-size:12px;color:var(--mint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.farr{text-align:center;color:var(--teal);line-height:1}
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .step{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:20px;transition:border-color .2s,transform .2s}
 .step:hover{border-color:var(--teal);transform:translateY(-3px)}
@@ -178,7 +182,7 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
       <div>
         <div class="pill"><span class="dot"></span>Your anything-IT service provider · South Africa</div>
         <h1>Any IT problem comes with a <span class="gt">solution.</span></h1>
-        <p class="sub">Smart IT for small businesses and home offices. We keep your tech running, set you up on the Microsoft cloud properly, and build AI assistants that answer and book every lead, day and night.</p>
+        <p class="sub">Smart IT for small businesses and home offices. We keep your tech running, set you up on the Microsoft cloud properly, and automate the repetitive work that eats your team's day.</p>
         <div class="btns">
           <a class="btn go" href="#contact">Get a quote</a>
           <a class="btn" href="#services">Try the live demos</a>
@@ -205,7 +209,7 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
       <div class="stat"><b>Since Sep 2021</b><span>supporting small businesses and home offices</span></div>
       <div class="stat"><b>AZ-305</b><span>Microsoft Azure Solutions Architect Expert</span></div>
       <div class="stat"><b>On-site + remote</b><span>we come to you, or fix it remotely anywhere in South Africa</span></div>
-      <div class="stat"><b>24/7 AI</b><span>assistants that reply to leads while you sleep</span></div>
+      <div class="stat"><b>AI automation</b><span>repetitive work handled automatically</span></div>
     </div>
   </section>
 
@@ -222,8 +226,9 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
       <div class="pane" role="tabpanel" id="p1" aria-labelledby="t1">
         <div>
           <h3>Office IT that stays fixed</h3>
-          <p>The everyday tech that keeps your team working, set up properly and written down so it doesn't break again.</p>
+          <p>From a single broken laptop to a full rollout of new machines, set up properly and written down so it doesn't break again.</p>
           <ul>
+            <li>New laptop and PC rollouts for government and private offices: unboxed, set up, connected and ready to use</li>
             <li>Computer repair: laptops, desktops and printers</li>
             <li>Wi-Fi, routers and network problems</li>
             <li>Microsoft 365: email, Teams, OneDrive</li>
@@ -276,20 +281,30 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
 
       <div class="pane" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
         <div>
-          <h3>AI assistants that never leave a lead waiting</h3>
-          <p>Built inside tools you already use, such as GoHighLevel or Microsoft 365, and tuned to your business.</p>
+          <h3>Automate the repetitive work</h3>
+          <p>If your team does the same task every day, there's a good chance AI and automation can do it for them. We find those jobs, then build automations inside the tools you already use, like Microsoft 365, Google Workspace and your CRM.</p>
           <ul>
-            <li>Instant replies to every enquiry, day or night</li>
-            <li>Calls booked straight into your calendar</li>
-            <li>Reminders and no-show follow-ups</li>
-            <li>A daily report of leads and bookings</li>
+            <li>Data entry and copying between systems</li>
+            <li>Quotes, invoices and documents drafted for you</li>
+            <li>Emails sorted, answered and followed up</li>
+            <li>Reports put together and sent on schedule</li>
+            <li>Leads replied to and booked, day and night</li>
+            <li>Apps connected so information flows by itself</li>
           </ul>
-          <p style="margin-top:14px"><button class="btn sm" id="replay" type="button">Replay the demo</button></p>
         </div>
         <div class="demo">
-          <h4>An enquiry at 3:48am</h4>
-          <p class="small">Example conversation from a test build for a fictional dental marketing agency.</p>
-          <div class="chat" id="chat" aria-live="polite"></div>
+          <h4>What could you automate?</h4>
+          <p class="small">Pick a task to see how an automation would handle it.</p>
+          <div class="chips" id="autoChips" role="group" aria-label="Repetitive tasks"></div>
+          <div class="flow" id="flow" aria-live="polite"></div>
+          <div class="calc" style="margin-top:16px">
+            <label class="r" for="ahrs"><span class="row"><span>Hours a week your team spends on it</span><output id="ahrsO" for="ahrs"></output></span><input id="ahrs" type="range" min="1" max="40" step="1" value="6"></label>
+            <div class="save">
+              <div class="big"><b id="aYear">0 h</b><span>a year your team could get back</span></div>
+              <div><b id="aDays">0</b><span>working days (8 h)</span></div>
+            </div>
+            <p class="small" style="margin:0">Rough maths, assuming the task is fully automated across 48 working weeks. Most automations still need someone to check the exceptions.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -388,7 +403,7 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
     ['hits> ', 'scan office-network'], ['', '✓ 6 devices online · Wi-Fi signal strong', 1],
     ['hits> ', 'check backups'], ['', '✓ last backup 02:00 · restore tested', 1],
     ['hits> ', 'azure cost --test-servers'], ['', '✓ night shutdown on · bill down', 1],
-    ['hits> ', 'ai reply --lead "new enquiry"'], ['', '✓ answered · call booked Thu 08:00', 1]
+    ['hits> ', 'automate invoices --monthly'], ['', '✓ 42 invoices drafted · sent for approval', 1]
   ];
   const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   let html = '';
@@ -505,7 +520,7 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
 
   /* tabs */
   const tabs = [...document.querySelectorAll('[role=tab]')];
-  const show = t => { tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (t.id === 't3') runChat(); };
+  const show = t => { tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });  };
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => show(t));
     t.addEventListener('keydown', e => { const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (k) { const n = tabs[(i + k + tabs.length) % tabs.length]; n.focus(); show(n); } });
@@ -547,30 +562,27 @@ footer .in{display:flex;justify-content:space-between;align-items:center;gap:14p
   };
   [spend, hrs, wk].forEach(x => x.addEventListener('input', calc)); calc();
 
-  /* chat demo */
-  const chat = document.getElementById('chat');
-  const convo = [
-    ['lead', 'Dr Leah Morgan', 'Hi, I filled in your form. Thursday could work, morning ideally.'],
-    ['ai', 'AI assistant', 'I have Thursday 3 Dec at 8:00 or 9:00 AM for a free 30-minute call. Which suits you?'],
-    ['lead', 'Dr Leah Morgan', '8am works. How much do you charge though?'],
-    ['ai', 'AI assistant', 'You\'re booked for Thursday 3 Dec at 8:00 AM. Pricing depends on your practice, so we\'ll cover it on the call.'],
-    ['sys', '', 'calendar: booked · pipeline: "Call booked" · reminder scheduled']
+  /* automation picker */
+  const autos = [
+    ['Invoices and quotes', ['Job marked done in your system', 'AI drafts the invoice or quote with the right items and prices', 'Sent to you to approve, then emailed to the client']],
+    ['Data entry', ['A form, email or spreadsheet arrives', 'AI reads it and pulls out the details', 'Details typed into your CRM, sheet or system, no copy-paste']],
+    ['Email inbox', ['New emails arrive', 'AI sorts them, drafts replies to common questions and flags urgent ones', 'Your team only handles what needs a person']],
+    ['Weekly reports', ['Every Friday at 16:00', 'Numbers pulled from your systems and summarised in plain language', 'Report lands in the right inboxes, done']],
+    ['New staff setup', ['HR adds a new starter', 'Accounts, licences, laptop and access requested automatically', 'Day one: everything works when they arrive']],
+    ['Lead replies', ['A new enquiry comes in, even at 3am', 'AI replies in seconds and offers times', 'Call booked in your calendar, with reminders']]
   ];
-  let run = 0;
-  const bubble = ([k, w, t]) => { const m = document.createElement('div'); m.className = 'msg ' + k; if (w) { const s = document.createElement('small'); s.textContent = w; m.appendChild(s); } m.appendChild(document.createTextNode(t)); return m; };
-  const runChat = () => {
-    const me = ++run; chat.innerHTML = '';
-    if (reduce) { convo.forEach(c => chat.appendChild(bubble(c))); return; }
-    let i = 0;
-    const next = () => {
-      if (me !== run || i >= convo.length) return;
-      const c = convo[i], ty = document.createElement('div');
-      if (c[0] === 'ai') { ty.className = 'typing'; ty.innerHTML = '<i></i><i></i><i></i>'; chat.appendChild(ty); }
-      setTimeout(() => { if (me !== run) return; ty.remove(); chat.appendChild(bubble(c)); i++; setTimeout(next, 700); }, c[0] === 'ai' ? 1300 : 500);
-    };
-    next();
+  const ac = document.getElementById('autoChips'), flow = document.getElementById('flow');
+  const pickA = i => {
+    [...ac.children].forEach((b, j) => b.setAttribute('aria-pressed', i === j));
+    const labels = ['Trigger', 'Automation', 'Result'];
+    flow.innerHTML = autos[i][1].map((t, k) => `<div class="fstep" style="animation-delay:${k * .12}s"><span class="mono">${labels[k]}</span>${t}</div>`).join('<div class="farr" aria-hidden="true">↓</div>');
   };
-  document.getElementById('replay').addEventListener('click', runChat);
+  ac.innerHTML = autos.map(a => `<button type="button" class="chip">${a[0]}</button>`).join('');
+  [...ac.children].forEach((b, i) => b.addEventListener('click', () => pickA(i)));
+  pickA(0);
+  const ahrs = document.getElementById('ahrs');
+  const aUpd = () => { const h = +ahrs.value, y = h * 48; document.getElementById('ahrsO').textContent = h + ' h'; document.getElementById('aYear').textContent = y + ' h'; document.getElementById('aDays').textContent = Math.round(y / 8); };
+  ahrs.addEventListener('input', aUpd); aUpd();
 
   /* contact */
   let need = 'Office IT support';
